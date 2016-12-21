@@ -1,0 +1,21 @@
+.statistics_data {
+    width: 100%;
+    line-height:30px;
+    margin: 20px;
+    padding: 20px;
+    padding-bottom: 30px;
+}
+
+.statistics_data span{
+    float: left;
+    width: 33%;
+    line-height: 30px;
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.chart_ones{
+    background: black;
+}
+

@@ -1,0 +1,179 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>车辆信息注册</title>
+    <link rel="stylesheet" type="text/css" href="./css/signup.index.css">
+    <link rel="stylesheet" type="text/css" href="./css/signup.g.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+</head>
+
+<body class="w1200">
+
+<div id="header">
+    <img class="logo" src="img/logo.jpg">
+    <div id="title"><h1>长途客车安全监测与综合评估系统</h1></div>
+</div>
+
+<div class="container register">
+    <div class="mainLeft">
+        <h1 class="areaTitle">系统菜单</h1>
+        <div class="myList">
+            <h3 class="myListTitle hide"><span></span>
+                <i class="arrow_list"></i><i class="smallIcon"></i><a href="index.html">首__页</a>
+            </h3>
+            <h3 class="myListTitle hide"><span></span>
+                <i class="arrow_list"></i><i class="smallIcon"></i><a href="mng_company.html">客运公司</a>
+            </h3>
+            <h3 class="myListTitle hide"><span></span>
+                <i class="arrow_list"></i><i class="smallIcon"></i><a href="mng_vehicle.html">车辆管理</a>
+            </h3>
+            <h3 class="myListTitle hide"><span></span>
+                <i class="arrow_list"></i><i class="smallIcon"></i><a href="mng_driver.html">司机管理</a>
+            </h3>
+            <h3 class="myListTitle hide"><span></span>
+                <i class="arrow_list"></i><i class="smallIcon"></i><a href="mng_history.html">运营记录</a>
+            </h3>
+            <h3 class="myListTitle hide"><span></span>
+                <i class="arrow_list"></i><i class="smallIcon"></i><a href="account.html">账户安全</a>
+            </h3>
+            <h3 class="myListTitle"><span></span>
+                <i class="arrow_list"></i><i class="smallIcon"></i><a href="signup.html">用户注册</a>
+            </h3>
+            <h3 class="myListTitle"><span></span>
+                <i class="arrow_list"></i><i class="smallIcon"></i><a href="login.html">退__出</a>
+            </h3>
+        </div>
+    </div>
+    <div class="mainRight">
+
+        <div class="sub_title"><span>当前位置：用户信息注册</span></div>
+
+        <div class="content w1000">
+            <div class="enterA" id="enterA" style="display: block;">
+
+            <form action="" method="post">
+                <div id="formArea">
+                    <div class="box box_3"><label class="item">姓  名</label>
+                        <div class="ipt_box nick_ipt_box">
+                            <div class="bg_txt">
+                                <input type="text" class="new_txt">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box box_3"><label class="item">身份证</label>
+                        <div class="ipt_box nick_ipt_box">
+                            <div class="bg_txt">
+                                <input type="text" class="new_txt">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box box_3"><label class="item">电  话</label>
+                        <div class="ipt_box nick_ipt_box">
+                            <div class="bg_txt">
+                                <input type="text" class="new_txt">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box box_3"><label class="item">邮  箱</label>
+                        <div class="ipt_box nick_ipt_box">
+                            <div class="bg_txt">
+                                <input type="text" class="new_txt">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box box_3"><label class="item">密  码</label>
+                        <div class="ipt_box nick_ipt_box">
+                            <div class="bg_txt">
+                                <input type="text" class="new_txt">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box box_3"><label class="item">确认密码</label>
+                        <div class="ipt_box nick_ipt_box">
+                            <div class="bg_txt">
+                                <input type="text" class="new_txt">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box box_6">
+                        <div class="item">性别</div>
+                        <div class="ipt_box nobg sex_box"><a name="male" id="sex_1" class="checked" tabindex="9">男</a><a
+                                id="sex_2" class="unchecked" name="femail" tabindex="10">女</a></div>
+                        <div class="info">
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td id="sex_info" class="hidden"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="box box_8">
+                        <div class="item">归属客运公司</div>
+                        <div id="area_dt" class="ipt_box nopadding nobg">
+                            <div id="country_box">
+                                <div id="country_value_bg" class="area_value_bg">
+                                    <input value="广东省" type="text" id="country_value"
+                                                                                        class="country_value"
+                                                                                        tabindex="15" maxlength="20"
+                                                                                        autocomplete="off"></div>
+                            </div>
+                            <div id="province_box">
+                                <div id="province_value_bg" class="area_value_bg">
+                                    <input value="广州市" type="text" id="province_value"
+                                                                                         class="province_value"
+                                                                                         tabindex="16" maxlength="20"
+                                                                                         autocomplete="off"></div>
+                            </div>
+                            <div id="city_box">
+                                <div id="city_value_bg" class="area_value_bg">
+                                    <input value="天河客运站" type="text" id="city_value"
+                                                                                     class="city_value" tabindex="17"
+                                                                                     maxlength="20" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box box_11">
+                        <div class="item"></div>
+                        <div id="submit_box" class="ipt_box">
+                            <div id="up_msg_err" class="err_tips hide"></div>
+                            <div class="submit" style="padding-top:10px"><input type="button" value="立即注册" title="立即注册"
+                                                                                tabindex="23" id="submit"
+                                                                                onclick="index.submit()"></div>
+                        </div>
+                    </div>
+                    <div class="box box_11">
+                        <div class="item"></div>
+                        <div class="ipt_box">
+                            <div class="agree_box"><a name="agree" class="a_1 checked" id="agree" tabindex="22">我已阅读并同意相关服务条款和隐私政策</a>
+                                <div id="x_box" class="x_box">
+                                    <div id="x_switcher" title="点击查看用户协议"></div>
+                                    <p><a id="item_1" href="https://ssl.zc.qq.com/chs/agreement1_chs.html"
+                                          target="_blank" title="点击查看《QQ号码规则》">《QQ号码规则》</a><br><a id="item_2"
+                                                                                                  href="http://qzone.qq.com/web/tk.html"
+                                                                                                  target="_blank"
+                                                                                                  title="点击查看《QQ空间服务协议》"
+                                                                                                  style="display: none;">《QQ空间服务协议》</a><br><a
+                                            id="item_3" href="http://www.qq.com/privacy.htm" target="_blank"
+                                            title="点击查看《隐私政策》">《隐私政策》</a><br></p></div>
+                            </div>
+                        </div>
+                        <div class="info"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="footer">2015-2017 © ziqiany.com</div>
+
+
+</body>
+
+</html>

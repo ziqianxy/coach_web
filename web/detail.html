@@ -1,0 +1,409 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+<title>长途客车安全监测与综合评估系统</title>
+
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="css/detail.css"/>
+<link rel="stylesheet" type="text/css" href="css/amap.css"/>
+
+</head>
+
+<body class="w1200">
+
+	<div id="header">
+		<img class="logo" src="img/logo.jpg" >
+		<div id="title"><h1>长途客车安全监测与综合评估系统</h1></div>
+	</div>
+
+	<div class="container detail">
+		<div class="mainLeft">
+			<h1 class="areaTitle">系统菜单</h1>
+			<div class="myList">
+				<h3 class="myListTitle"><span></span>
+					<i class="arrow_list"></i><i class="smallIcon"></i><a href="index.html">首__页</a>
+				</h3>
+                <h3 class="myListTitle"><span></span>
+					<i class="arrow_list"></i><i class="smallIcon"></i><a href="mng_company.html">客运公司</a>
+				</h3>
+				<h3 class="myListTitle"><span></span>
+					<i class="arrow_list"></i><i class="smallIcon"></i><a href="mng_vehicle.html">车辆管理</a>
+				</h3>
+				<h3 class="myListTitle"><span></span>
+					<i class="arrow_list"></i><i class="smallIcon"></i><a href="mng_driver.html">司机管理</a>
+				</h3>
+				<h3 class="myListTitle"><span></span>
+					<i class="arrow_list"></i><i class="smallIcon"></i><a href="mng_history.html">运营记录</a>
+				</h3>
+				<h3 class="myListTitle"><span></span>
+					<i class="arrow_list"></i><i class="smallIcon"></i><a href="account.html">账户安全</a>
+				</h3>
+                <h3 class="myListTitle hide"><span></span>
+					<i class="arrow_list"></i><i class="smallIcon"></i><a href="signup.html">用户注册</a>
+				</h3>
+                <h3 class="myListTitle"><span></span>
+					<i class="arrow_list"></i><i class="smallIcon"></i><a href="login.html">退__出</a>
+				</h3>
+			</div>
+		</div>
+		<div class="mainRight">
+
+			<div class="sub_title"><span>当前位置：行程记录及安全报告</span></div>
+
+			<div id="detail" class ="content w1000">
+
+				<h2>----行车数据----</h2>
+				<div class="statistics_data">
+					<span>行车里程：25 km</span>
+					<span>行车时间：6.2 min</span>
+					<span>·</span>
+
+					<span>累计油耗：1.3 L</span>
+					<span>平均油耗：8 L/100km</span>
+					<span>经济性：良好</span>
+
+					<span>平均速度：23 km/h</span>
+					<span>最高速度：50 km/h</span>
+					<span>sigmaVSS：0.5</span>
+
+					<span>急加速：0 次</span>
+					<span>急减速：2 次</span>
+					<span>·</span>
+
+					<span>故障灯：-- </span>
+					<span>故障码：-- </span>
+					<span>·</span>
+
+				</div>
+
+				<hr>
+				<h2>----行车轨迹----</h2>
+				<div id="map" class="h500"></div>
+
+				<hr>
+				<h2>----驾驶行为----</h2>
+				<div id="chart_sta" class="e_chart h400"></div>
+
+				<hr>
+				<h2>----实时数据----</h2>
+				<div id="chart_all" class="e_chart h500"></div>
+
+				<hr>
+				<h2>----数据回放----</h2>
+				<div id="chart_ones">
+					<div id="chart_rpm" class="e_chart h300"></div>
+					<div id="chart_spd" class="e_chart h300"></div>
+					<div id="chart_ect" class="e_chart h300"></div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div id="footer">2015-2017 © ziqiany.com</div>
+
+</body>
+
+</html>
+
+
+<script src="http://webapi.amap.com/maps?v=1.3&key=8e8526a64dd0dca746f95d2c164a0cbc&"></script>
+<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+<script type="text/javascript" src="amap.js"></script>
+
+<!-- 高德amap地图 -->
+<script>
+    var editorTool, map = new AMap.Map("map", {
+        resizeEnable: true,
+        center: [113.352227,23.152334],//地图中心点
+        zoom: 11 //地图显示的缩放级别
+    });
+
+    //在地图上绘制折线
+    var editor={};
+    editor._line=(function(){
+        var lineArr =
+        [[113.507374, 22.967852], [113.507394, 22.967892], [113.507036, 22.968244], [113.506477, 22.967685], [113.504993, 22.968249], [113.502073, 22.968618], [113.498804, 22.969118], [113.498735, 22.969129], [113.497579, 22.969232], [113.491171, 22.969942], [113.485779, 22.967226], [113.484982, 22.965538], [113.486068, 22.961513], [113.487174, 22.957518], [113.48809, 22.953424], [113.482229, 22.950499], [113.477175, 22.948312], [113.474484, 22.947279], [113.466706, 22.944928], [113.458777, 22.942735], [113.457989, 22.942506], [113.457889, 22.942476], [113.450447, 22.94036], [113.443381, 22.938902], [113.434236, 22.937164], [113.428753, 22.936489], [113.424607, 22.936753], [113.424867, 22.935152], [113.420431, 22.936165], [113.414115, 22.946262], [113.408077, 22.957968], [113.401978, 22.969872], [113.393936, 22.979223], [113.389053, 22.989374], [113.387383, 23.002428], [113.382779, 23.015229], [113.378646, 23.025569], [113.380008, 23.038187], [113.371558, 23.04733], [113.361613, 23.054278], [113.362135, 23.065244], [113.366392, 23.072003], [113.369968, 23.07611], [113.375796, 23.08136], [113.373583, 23.08845], [113.373624, 23.095683], [113.373905, 23.103597], [113.374326, 23.11068], [113.374567, 23.117413], [113.375048, 23.124527], [113.37638, 23.131001], [113.37616, 23.136393], [113.377652, 23.140196], [113.372355, 23.14064], [113.365655, 23.143201], [113.361389, 23.144435], [113.353134, 23.145051], [113.347844, 23.145132], [113.347182, 23.145861], [113.346782, 23.14727], [113.347112, 23.147821], [113.347553, 23.148452], [113.347974, 23.148994], [113.348144, 23.149094], [113.348165, 23.149954], [113.346922, 23.151613], [113.346261, 23.154412], [113.344508, 23.15639], [113.343977, 23.160231], [113.343777, 23.16144], [113.343807, 23.162541]]
+        ;
+        return new AMap.Polyline({
+            map: map,
+            path: lineArr,
+            strokeColor: "red",//线颜色
+            strokeOpacity: 1,//线透明度
+            strokeWeight: 6,//线宽
+            strokeStyle: "solid"//线样式
+        });
+    })();
+
+    map.setFitView();
+
+</script>
+
+
+
+<!-- 百度e-chart图表区域 -->
+
+<!-- ECharts单文件引入 -->
+<script src="js/echarts.js"></script>
+
+<script type="text/javascript">
+
+var spd = [60,58,30,30,32,33,20,17,17,23,32,29,15,17,12,14,8,6,13,11,13,6,12,10,0,7,0,0,9,10,13,7,16,21,26,33,33,43,48,44,48,57,61,59,58,56,54,49,46,47,48,52,45,41,25,41,39,31,29,32,45,40,7,8,0,0,5,11,23,20,23,25,45,49,33,0,5,0,19,17,16,23,26,28,28,21,7,4,8,10,8,7,8,29,29,21,36,26,25,35,39,40,27,17,4,0,16,25,24,18,13,18,10,61,64,71,75,79,79,79,75,75,72,69,60,69,71,71,68,67,71,68,62,58,60,61,65,69,71,67,64,65,65,67,67,63,63,64,60,64,60,55,53,48,55,51,49,54,50,50,44,42,42,48,53,35,39,48,58,59];
+var rpm = [2139,2081,1834,2058,2102,2153,1603,1366,1062,1515,1864,2143,1420,1033,1228,933,958,865,1479,1344,1173,1202,1198,1202,798,967,881,757,1089,1051,1444,676,1105,1510,1624,2273,1764,1789,2132,2040,2235,1975,2099,2040,2033,2002,1923,1822,1674,1672,1660,1760,1693,1551,1189,1632,1788,1640,1803,1292,1968,2011,912,853,1075,763,844,1028,1833,1424,1282,1566,2150,2225,1798,823,790,988,1635,1452,1051,1486,1716,1869,1969,1646,938,795,881,1324,1152,901,1050,1840,2126,1604,2068,1496,1062,1334,1826,1810,1929,1347,816,787,1153,1523,1587,1078,1143,1273,808,1700,1703,1901,2051,2139,2212,2224,2152,2067,1991,1907,1702,1795,1941,1963,1929,1840,1902,1917,1811,1662,1615,1710,1811,1886,1929,1911,1779,1768,1794,1857,1874,1804,1731,1746,1699,1731,1707,1565,1687,1755,1845,1848,1783,1857,1812,1746,1620,1432,1504,1698,1816,1588,1717,2072,2316,2138];
+var ect = [80,82,100,101,101,101,101,101,102,102,102,104,104,104,104,104,105,105,105,106,106,106,107,107,107,106,106,105,104,102,101,101,101,101,101,101,102,102,102,102,102,102,102,102,101,101,100,100,98,98,98,98,98,98,98,98,98,98,100,100,100,100,100,101,101,101,101,102,102,104,104,104,105,105,105,105,105,105,105,79,80,80,80,81,81,82,83,83,83,83,85,85,85,86,86,87,87,88,89,89,89,91,98,98,98,98,98,98,98,98,98,100,98,98,98,98,98,98,98,98,96,96,96,95,95,95,95,96,98,98,98,98,98,96,96,96,96,98,98,98,98,98,96,96,96,95,95,96,96,98,98,98,98,98,96,96,96,96,96,98,98,98,98,98,96,96,95,95,96,98];
+
+// to display the statistics data
+var myChart_sta = echarts.init(document.getElementById("chart_sta"));
+
+option_sta = {
+    title : {
+        text: '速度分布统计',
+        left: 'center',
+        top: 'top',
+        show: false,
+        textStyle: {
+            fontSize: '24',
+            fontWeight: 'normal'
+        }
+    },
+    textStyle: {
+            fontSize: '14',
+            fontWeight: 'normal'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: "{b}, {c}min, {d}%"
+    },
+    legend: {
+        orient: 'vertical',
+        left: '80%',
+        top: 100,
+        itemGap: 10,
+        itemHeight: 30,
+        itemWidth: 50,
+        formatter: '  {name} km/h',
+        data: ['0','0-60','60-90','90-120','>120']
+    },
+    toolbox: {
+        show : false,
+        right: '20',
+        feature : {
+            saveAsImage : {show: true}
+        }
+    },
+    backgroundColor: {
+        color: '#eeeeee'
+    },
+    series : [
+        {
+            name: 'speed',
+            type: 'pie',
+            radius : ['0%', '70%'],
+            center: ['45%', '50%'],
+            avoidLabelOverlap: false,
+            label: {
+                normal: {
+                    show: true,
+                    formatter: "{b}, {c}min, {d}%"
+                },
+                emphasis: {
+                    show: true,
+                    position: 'center',
+                    textStyle: {
+                        fontSize: '18',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: true
+                }
+            },
+            data:[
+                {value:35, name:'0',itemStyle: {normal: {color: '#FFB35B'}}},
+                {value:310, name:'0-60',itemStyle: {normal: {color: '#FD807E'}}},
+                {value:535, name:'60-90',itemStyle: {normal: {color: '#33BDB0'}}},
+                {value:405, name:'90-120',itemStyle: {normal: {color: '#24A7EF'}}},
+                {value:10, name:'>120',itemStyle: {normal: {color: '#FF0000'}}}
+            ],
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+
+if (option_sta && typeof option_sta === "object") {
+    myChart_sta.setOption(option_sta, true);
+}
+
+
+// to display all the data
+var myChart_all = echarts.init(document.getElementById("chart_all"));
+option = {
+    tooltip: {
+        trigger: 'axis',
+        position: function (pt) {
+            return [pt[0], '50%'];
+        }
+    },
+    legend: {
+        data:['rpm','spd','ect']
+    },
+    toolbox: {
+            show : true,
+            right: '20',
+            feature : {
+                mark : {show: true},
+                dataView : {show: false, readOnly: false},
+                magicType: {show: true, type: ['line', 'bar']},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: []
+    },
+    yAxis: {
+        type: 'value',
+        boundaryGap: false
+    },
+    dataZoom: [
+        {
+            type: 'inside',
+            xAxisIndex: [0],
+            start: 0,
+            end: 100
+        },
+        {
+            disabled: true,
+            type: 'inside',
+            yAxisIndex: [0],
+            start: 0,
+            end: 100
+        },
+        {
+            start: 0,
+            end: 100,
+            xAxisIndex: [0],
+            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+            handleSize: '80%',
+            handleStyle: {
+                color: '#fff',
+                shadowBlur: 3,
+                shadowColor: 'rgba(0, 0, 0, 0.6)',
+                shadowOffsetX: 2,
+                shadowOffsetY: 2
+            }
+        },
+        {
+            start: 0,
+            end: 100,
+            yAxisIndex: [0],
+            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+            handleSize: '80%',
+            handleStyle: {
+                color: '#fff',
+                shadowBlur: 3,
+                shadowColor: 'rgba(0, 0, 0, 0.6)',
+                shadowOffsetX: 2,
+                shadowOffsetY: 2
+            }
+        }
+    ],
+    series: [{
+        name: 'rpm',
+        type: 'line',
+        data: rpm,
+        lineStyle: {normal: {color: 'red'}}
+    },{
+        name: 'spd',
+        type: 'line',
+        data: spd,
+        lineStyle: {normal: {color: 'green'}}
+    },{
+        name: 'ect',
+        type: 'line',
+        data: ect,
+        lineStyle: {normal: {color: 'blue'}}
+    }]
+};
+
+if (option && typeof option === "object") {
+    myChart_all.setOption(option, true);
+}
+
+
+
+
+var myChart_rpm = echarts.init(document.getElementById("chart_rpm"));
+option = {
+    tooltip: {},
+    legend: {
+        data:['rpm']
+    },
+    xAxis: {data: []},
+    yAxis: {},
+    series: [{
+        name: 'rpm',
+        type: 'bar',
+        data: rpm,
+        itemStyle: {normal: {color: 'red'},emphasis: {color: 'black'}}
+    }]
+};
+
+if (option && typeof option === "object") {
+    myChart_rpm.setOption(option, true);
+}
+
+var myChart_spd = echarts.init(document.getElementById("chart_spd"));
+option = {
+    tooltip: {},
+    legend: {
+        data:['spd','ect']
+    },
+    xAxis: {data: []},
+    yAxis: {},
+    series: [{
+        name: 'spd',
+        type: 'bar',
+        data: spd,
+        itemStyle: {normal: {color: 'green'},emphasis: {color: 'black'}}
+    }]
+};
+if (option && typeof option === "object") {
+    myChart_spd.setOption(option, true);
+}
+
+var myChart_etc = echarts.init(document.getElementById("chart_ect"));
+option = {
+    tooltip: {},
+    legend: {
+        data:['ect']
+    },
+    xAxis: {data: []},
+    yAxis: {},
+    series: [{
+        name: 'ect',
+        type: 'bar',
+        data: ect,
+        itemStyle: {normal: {color: 'blue'},emphasis: {color: 'black'}}
+    }]
+};
+
+if (option && typeof option === "object") {
+    myChart_etc.setOption(option, true);
+}
+
+
+</script>
+
